@@ -1,8 +1,28 @@
 h1 Home
 h1 Card list
 
-button.btn.btn-primary(type='submit', ng-click='submit()') Find KtK Cards
-.div(ng-repeat='card in cards') 
-  h2 card.name
+div(ng-controller='HomeCtrl')
+  form(name='expansionForm', novalidate)
+      .form-group
+        label(for='code') Expansion Code
+        input.form-control(type='text', name='code', autofocus=true, ng-model='expansion.code', value="FRF",  required)
+        button.btn.btn-primary(type='submit', ng-click='submit(expansion)') Find Cards
+  .div 
+    table.table.table-striped
+      thead
+        th Name
+        th Clan
+        th Multiverse ID
+        th Image
+      tbody(ng-repeat='card in cards | limitTo:10') 
+        td {{card.name}}
+        td {{card.watermark}}
+        td {{card.multiverseid}}
+        td 
+          img(src="http://api.mtgdb.info/content/card_images/{{card.multiverseid}}.jpeg")
+            
+    
+    
+    
 
   

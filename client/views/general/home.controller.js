@@ -5,10 +5,10 @@ angular.module('angular-prototype')
 
 
     $scope.submit = function(code) {
+
       Expansion.showCards(code)
       .then(function(response) {
-        console.log(response);
-        // $scope.cards = response.data.Cards;
+        $scope.cards = response.data.expansion[0].cards;
       });
     };
 

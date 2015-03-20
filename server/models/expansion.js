@@ -14,5 +14,5 @@ var expansionSchema = mongoose.Schema({
     cards: []
 });
 
-Expansion = mongoose.model('Expansion', expansionSchema);
+Expansion = mongoose.model('Expansion', expansionSchema, 'brewCards');
 module.exports = Expansion;

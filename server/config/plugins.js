@@ -9,8 +9,5 @@ module.exports = [
         args: [{log: '*', response: '*', error: '*'}]
       }]
     }
-  },
-  {
-    register: require('hapi-auth-cookie')
   }
 ];

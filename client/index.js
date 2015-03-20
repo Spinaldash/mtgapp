@@ -12,8 +12,8 @@ angular.module('angular-prototype', ['ui.router', 'ngMessages'])
       .state('register', {url:'/register', templateUrl:'/views/users/users.html', controller:'UsersCtrl'})
       .state('login', {url:'/login', templateUrl:'/views/users/users.html', controller:'UsersCtrl'});
   }])
-  .run(['$rootScope', 'User', function($rootScope, User){
-    User.status().then(function(response){
-      $rootScope.email = response.data.email;
-    });
-  }]);
+  // .run(['$rootScope', 'User', function($rootScope, User){
+  //   User.status().then(function(response){
+  //     $rootScope.email = response.data.email;
+  //   });
+  // }]);

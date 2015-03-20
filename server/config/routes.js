@@ -8,5 +8,5 @@ module.exports = [
   {method: 'get', path: '/status', config: require('../routes/users/status')},
   {method: 'delete', path: '/logout', config: require('../routes/users/logout')},
 
-  {method: 'get', path: '/expansion', config: require('../routes/expansions/expansion')},
+  {method: 'post', path: '/expansion', config: require('../routes/expansions/expansion')}
 ];
