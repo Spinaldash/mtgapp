@@ -12,10 +12,16 @@ module.exports = {
       expansion[0].cards.forEach(function(card){
           console.log("Running forEach. This:", card);
           if (!card.imageUrl) {
-            console.log("This card is found at:", `http://api.mtgdb.info/content/card_images/${card.multiverseid}.jpeg` );
+            url = `http://api.mtgdb.info/content/card_images/${card.multiverseid}.jpeg`;
+            filename = card.name
+            console.log("This card is found at:", url);
+            Expansion.download(url, filename, function()=>{
+              Expansion.save(function(err)=>{
+                reply({expansion:expansion});
+              });
+            });
           }
       });
-      reply({expansion:expansion});
     });
   }
 };

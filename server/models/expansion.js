@@ -1,6 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var request = require('request');
+var AWS = require('aws-sdk');
 var Expansion;
 
 var expansionSchema = mongoose.Schema({
@@ -13,6 +15,16 @@ var expansionSchema = mongoose.Schema({
     booster: [],
     cards: []
 });
+
+expansionSchema.statics.download = function(url, fileName){
+  var s3 = new AWS.S3();
+
+
+  request({url: url, encoding:null}, function(err, response, body){
+    var params = {Bucket: process.env.AWS_BUCKET, Key: fileName, Body: body, ACL: 'public-read'};
+    s3.putObject(params);
+  });
+};
 
 Expansion = mongoose.model('Expansion', expansionSchema, 'brewCards');
 module.exports = Expansion;
