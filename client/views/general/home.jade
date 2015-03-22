@@ -7,22 +7,18 @@ div(ng-controller='HomeCtrl')
         label(for='code') Expansion Code
         input.form-control(type='text', name='code', autofocus=true, ng-model='expansion.code', value="FRF",  required)
         button.btn.btn-primary(type='submit', ng-click='submit(expansion)') Find Cards
-  .div 
-    table.table.table-striped
-      thead
-        th Name
-        th Clan
-        th Multiverse ID
-        th Image
-      tbody(ng-repeat='card in cards.KTK | codeBlue:"Red"') 
-        td {{card.name}}
-        td {{card.watermark}}
-        td {{card.multiverseid}}
-        td 
-          img(src="http://api.mtgdb.info/content/card_images/{{card.multiverseid}}.jpeg")
-            
-    
-    
-    
-
-  
+  div
+    button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Toggle collapse
+    hr
+    div(collapse="isCollapsed")
+      div.text-center.well.well-lg Filter By Color:
+        div.btn-group
+          label.btn.btn-success(ng-model="radioModel" btn-radio="'White'" uncheckable) White
+          label.btn.btn-success(ng-model="radioModel" btn-radio="'Blue'" uncheckable) Blue
+          label.btn.btn-success(ng-model="radioModel" btn-radio="'Black'" uncheckable) Black
+          label.btn.btn-success(ng-model="radioModel" btn-radio="'Red'" uncheckable) Red        
+          label.btn.btn-success(ng-model="radioModel" btn-radio="'Green'" uncheckable) Green
+  container
+    row
+      col-xs-2(ng-repeat='card in cards.KTK | codeBlue:radioModel') 
+        img(src="http://api.mtgdb.info/content/card_images/{{card.multiverseid}}.jpeg")

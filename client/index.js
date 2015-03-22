@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angular-prototype', ['ui.router', 'ngMessages'])
+angular.module('angular-prototype', ['ui.router', 'ngMessages', 'ui.bootstrap'])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
 

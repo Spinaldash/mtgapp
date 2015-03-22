@@ -14,11 +14,17 @@ angular.module('angular-prototype')
   })
   .controller('HomeCtrl', ['$scope', '$state', 'Expansion', function($scope, $state, Expansion){
 
-    $scope.cards = {};
-    $scope.submit = function(code) {
+    $scope.isCollapsed = true;
+    $scope.checkModel = {
+      left: false,
+      middle: true,
+      right: false
+    };
 
+    $scope.submit = function(code) {
       Expansion.showCards(code)
       .then(function(response) {
+        $scope.cards = {};
         $scope.cards[code.code] = response.data.expansion.cards;
       });
     };
