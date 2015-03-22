@@ -14,7 +14,7 @@ div(ng-controller='HomeCtrl')
         th Clan
         th Multiverse ID
         th Image
-      tbody(ng-repeat='card in cards | limitTo:10') 
+      tbody(ng-repeat='card in cards.KTK | codeBlue:"Red"') 
         td {{card.name}}
         td {{card.watermark}}
         td {{card.multiverseid}}

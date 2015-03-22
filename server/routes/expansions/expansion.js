@@ -25,7 +25,7 @@ module.exports = {
         if (err){
           console.log('Error in the async final iterator');
           }
-          console.log("FinalFunc is running");
+          console.log('FinalFunc is running');
           expansion.markModified('cards');
           expansion.save(function(){
             console.log('Save function has run');
