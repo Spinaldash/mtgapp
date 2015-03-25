@@ -5,7 +5,7 @@ angular.module('angular-prototype')
 
     function showCards(expCode){
       console.log('expCode is:', expCode);
-      return $http.post('/expansion', expCode);
+      return $http.post('/expansion',  {code:expCode});
     }
 
     return {showCards:showCards};
