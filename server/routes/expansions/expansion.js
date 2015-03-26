@@ -9,7 +9,9 @@ module.exports = {
     Expansion.findOne({code:request.payload.code}, function(err, expansion) {
       let iterator = function(card, callback){
           if (!card.imageUrl) {
-            let url = `http://api.mtgdb.info/content/card_images/${card.multiverseid}.jpeg`;
+            let url = `http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=${card.multiverseid}`;
+            // let url = `http://api.mtgdb.info/content/card_images/${card.multiverseid}.jpeg`;
+            console.log('url is:', url)
             let filename = _.kebabCase(card.name) + '.jpeg';
             Expansion.download(url, filename, function(s3url){
               console.log('s3url is:', s3url);
