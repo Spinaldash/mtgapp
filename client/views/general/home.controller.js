@@ -82,8 +82,21 @@ angular.module('angular-prototype')
 
     $scope.buttonDisable = function(setName) {
       if (!$scope.disabledButtons) { $scope.disabledButtons = {};}
-      $scope.disabledButtons.[setName] = true;
+      $scope.disabledButtons[setName] = true;
     }
+
+    //jquery for Full-body Nav
+
+    $(function() {
+
+    // Bind a click event to anything with the class "toggle-nav"
+    $('.toggle-nav').click(function() {
+          // Toggle the Body Class "show-nav"
+          $('body').toggleClass('show-nav');
+          // Deactivate the default behavior of going to the next page on click
+          return false;
+    });
+});
 
 
 }]);
