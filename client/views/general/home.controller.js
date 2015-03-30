@@ -77,7 +77,13 @@ angular.module('angular-prototype')
 
     $scope.resetCards = function() {
           $scope.cards = [];
+          delete $scope.disabledButtons;
     };
+
+    $scope.buttonDisable = function(setName) {
+      if (!$scope.disabledButtons) { $scope.disabledButtons = {};}
+      $scope.disabledButtons.[setName] = true;
+    }
 
 
 }]);

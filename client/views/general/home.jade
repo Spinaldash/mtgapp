@@ -1,57 +1,61 @@
 div(ng-controller='HomeCtrl')
+  div.page-header.headerBanner
+    .container
+      h1 Brew
+
   //- form(name='expansionForm', novalidate)
   //-     .form-group
   //-       label(for='code') Expansion Code
   //-       input.form-control(type='text', name='code', autofocus=true, ng-model='expansion', required)
   //-       button.btn.btn-primary(type='submit', ng-click='submit(expansion)') Find Cards
   div
-    button.btn.btn-default(ng-click='resetCards()') Reset
-    button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Filters
-    hr
-    div(collapse="isCollapsed")
-      
-      div.text-center.well.well-lg
-        div
-          label Add Set:
-          button.btn.btn-primary(ng-click='submit("DTK")') Dragons of Tarkir
-          button.btn.btn-primary(ng-click='submit("KTK")') Khans of Tarkir
-          button.btn.btn-primary(ng-click='submit("FRF")') Fate Reforged
-          button.btn.btn-primary(ng-click='submit("JOU")') Journey Into Nyx
-          button.btn.btn-primary(ng-click='submit("BNG")') Born of the Gods
-          button.btn.btn-primary(ng-click='submit("THS")') Theros
-          button.btn.btn-primary(ng-click='submit("M15")') Magic 2015 Core Set
-          
-        div
-          label Filter By Color:
-          div.btn-group 
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'White'" uncheckable) White
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Blue'" uncheckable) Blue
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Black'" uncheckable) Black
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Red'" uncheckable) Red        
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Green'" uncheckable) Green
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Colorless'" uncheckable) Colorless
-            label.btn.btn-success(ng-model="colorModel" btn-radio="'Land'" uncheckable) Land
-        div
-          label Sort By:
-          button.btn.btn-warning(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting Cost
-          button.btn.btn-warning(ng-model='sortModel' btn-radio="'color'" uncheckable) Color 
-        div
-          label Filter By Type:
-          div.btn-group 
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
-            label.btn.btn-success(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
-        div
-          label Filter By Rarity:
-          div.btn-group 
-            label.btn.btn-success(ng-model="rarityModel" btn-radio="'Common'" uncheckable) Common
-            label.btn.btn-success(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable) Uncommon
-            label.btn.btn-success(ng-model="rarityModel" btn-radio="'Rare'" uncheckable) Rare
-            label.btn.btn-success(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable) Mythic
-  container
-    .row
-      .col-xs-2(ng-if='cards' ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
-        img(ng-if='cards' src='{{card.imageUrl}}')
+    .container      
+      button.btn.btn-default(ng-click='resetCards()') Reset
+      button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Filters
+      hr
+      div(collapse="isCollapsed")
+        
+        div.text-center.well.well-lg
+          div
+            label Add Set:
+            button.btn.btn-primary(ng-click='submit("DTK"); buttonDisable("DTK")' ng-disabled='disabledButtons.DTK') Dragons of Tarkir
+            button.btn.btn-primary(ng-click='submit("KTK"); buttonDisable("KTK")' ng-disabled='disabledButtons.KTK') Khans of Tarkir
+            button.btn.btn-primary(ng-click='submit("FRF"); buttonDisable("FRF")' ng-disabled='disabledButtons.FRF') Fate Reforged
+            button.btn.btn-primary(ng-click='submit("JOU"); buttonDisable("JOU")' ng-disabled='disabledButtons.JOU') Journey Into Nyx
+            button.btn.btn-primary(ng-click='submit("BNG"); buttonDisable("BNG")' ng-disabled='disabledButtons.BNG') Born of the Gods
+            button.btn.btn-primary(ng-click='submit("THS"); buttonDisable("THS")' ng-disabled='disabledButtons.THS') Theros
+            button.btn.btn-primary(ng-click='submit("M15"); buttonDisable("M15")' ng-disabled='disabledButtons.M15') Magic 2015 Core Set
+            
+          div
+            label Filter By Color:
+            div.btn-group 
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'White'" uncheckable) White
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Blue'" uncheckable) Blue
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Black'" uncheckable) Black
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Red'" uncheckable) Red        
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Green'" uncheckable) Green
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Colorless'" uncheckable) Colorless
+              label.btn.btn-success(ng-model="colorModel" btn-radio="'Land'" uncheckable) Land
+          div
+            label Sort By:
+            button.btn.btn-warning(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting Cost
+            button.btn.btn-warning(ng-model='sortModel' btn-radio="'color'" uncheckable) Color 
+          div
+            label Filter By Type:
+            div.btn-group 
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
+              label.btn.btn-success(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
+          div
+            label Filter By Rarity:
+            div.btn-group 
+              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Common'" uncheckable) Common
+              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable) Uncommon
+              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Rare'" uncheckable) Rare
+              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable) Mythic
+    .container
+      col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
+        img.imgCtrl(src='{{card.imageUrl}}')
