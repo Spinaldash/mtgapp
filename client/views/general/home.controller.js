@@ -8,6 +8,7 @@ angular.module('angular-prototype')
       console.log('type is:', type);
       console.log('rarity is:', rarity);
       // if (!color){return true;} //If no color is specified, do not filter by color
+      if (!cards) { return filtered;}
       filtered = cards.filter(function(card){
         switch (color) {
           case undefined:
@@ -73,5 +74,10 @@ angular.module('angular-prototype')
         $scope.cards = $scope.cards.concat(response.data.expansion.cards)
       });
     };
+
+    $scope.resetCards = function() {
+          $scope.cards = [];
+    };
+
 
 }]);
