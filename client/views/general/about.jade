@@ -1,9 +1,38 @@
-h1 Michael J. Perez
-h2 @spinaldash
-h2 spinaldash.net
-
-div.techBackground
-  h2 Technologies Used:
-    img
+nav.navbar.navbar-default.topNav
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(ui-sref='home') Brew
+      ul.nav.navbar-nav.navbar-right
+        li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
+.container-fluid.imgContainer
+  hr
+  .row.text-center
+    .col-xs-4
+      span.aboutStyle Michael J. Perez
+    .col-xs-4
+      span.aboutStyle @Spinaldash
+    .col-xs-4
+      span.aboutStyle Spinaldash.net
+  hr
+  .row.text-center
+    .col-xs-4
+    .col-xs-4
+      h2 Technologies Used:
+      hr
+    .col-xs-4
+  .row.techBackground.text-center
+    .col-xs-2
+      img.imgControl(src='../../images/techno/AWS_logo.png', id='AWS')
+    .col-xs-2
+      img.imgControl(src='../../images/techno/hapi.png', id='hapi')
+    .col-xs-2
+      img.imgControl(src='../../images/techno/angularjs-logo.png')
+    .col-xs-2
+      img.imgControl(src='../../images/techno/nodejs-3.png')
+    .col-xs-2
+      img.imgControl(src='../../images/techno/javascript.png')
+    .col-xs-2
+      img.imgControl(src='../../images/techno/gulp.png')
+          
       
   

@@ -1,8 +1,8 @@
-.container-fluid
-  .row
-    .col-xs-12
-      div.centerStyle
-        h2.splashStyle Brew
-          h4 A Magic: The Gathering Compendium 
-      div
-        button.btn.btn-default(ui-sref='home') Start Brewing
+.container-fluid.noMargin
+  .row.text-center.noMargin
+      section.jumbotron.noMargin
+        .title BREW
+        p.tagline A Magic: The Gathering Compendium
+        button.btn.btn-default.callToAction(ui-sref='home') Start Brewing
+  video(autoplay='' loop='' poster='' muted)
+      source(src='http://player.vimeo.com/external/123777056.sd.mp4?s=6f252cfb9df78b6af1a6a98a4be8d328&profile_id=112' type='video/mp4')
