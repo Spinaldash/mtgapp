@@ -5,7 +5,8 @@ angular.module('angular-prototype', ['ui.router', 'ngMessages', 'ui.bootstrap', 
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('home', {url:'/', templateUrl:'/views/general/home.html', controller:'HomeCtrl'})
+    .state('splash', {url:'/', templateUrl:'/views/general/splash.html', controller:'HomeCtrl'})
+    .state('home', {url:'/home', templateUrl:'/views/general/home.html', controller:'HomeCtrl'})
 
   }]);
   // .run(['$rootScope', 'User', function($rootScope, User){

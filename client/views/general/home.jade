@@ -133,19 +133,12 @@ div.bodyDiv(ng-controller='HomeCtrl')
                 button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Warrior'" uncheckable) Warrior                
     .push-wrap
       .holdsEverything
-        nav.navbar.navbar-default.topNav(ng-controller='NavCtrl')
+        nav.navbar.navbar-default.topNav
           .container-fluid
             .navbar-header
-              button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
               a.navbar-brand(ui-sref='home') Brew
-            #navbar.collapse.navbar-collapse
               ul.nav.navbar-nav.navbar-right
                 li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
-        div
-          .container
-            col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
-              img.imgCtrl(src='{{card.imageUrl}}')
+        .container
+          col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
+            img.imgCtrl(src='{{card.imageUrl}}')
