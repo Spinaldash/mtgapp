@@ -4,9 +4,145 @@ body{
 
 .headerBanner {
   background-color: #4fbde0;
+  border-bottom: 1px solid #ebebeb;
+  border-bottom-color: #4e5d6c;
+  margin-bottom: 21px;
+
 }
 
-// Card Animation
+.sideTab {
+  position: fixed;
+}
+
+/* CSS Menu */
+
+.iconStyle{
+  height: 32px;
+  width: 32px;
+}
+
+.btnNavStyle {
+  height:75px;
+  width: 72px;
+  border: 1px dotted white;
+  border-color: white;
+
+}
+
+nav {
+  width: 375px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+.site-wrap {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.push-wrap {
+    margin-left: 75px;
+    -webkit-transition: all 300ms ease 0;
+    -moz-transition: all 300ms ease 0;
+    -o-transition: all 300ms ease 0;
+    transition: all 300ms ease 0;
+
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.show-nav .push-wrap {
+  -webkit-transform: translate(300px, 0);
+  -moz-transform: translate(300px, 0);
+  -ms-transform: translate(300px, 0);
+  -o-transform: translate(300px, 0);
+  transform: translate(300px, 0);
+
+  -webkit-transform: translate3d(300px, 0, 0);
+  -moz-transform: translate3d(300px, 0, 0);
+  -ms-transform: translate3d(300px, 0, 0);
+  -o-transform: translate3d(300px, 0, 0);
+  transform: translate3d(300px, 0, 0);
+}
+
+/* BASE CSS */
+body {
+  background: #e3e3e3;
+}
+a {
+  transition: all 300ms ease;
+}
+nav {
+  background: #2b343f;
+  text-align: center;
+  -webkit-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
+  box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav ul li a {
+  display: block;
+  text-decoration: none !important;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  color: #fff;
+}
+nav ul li a:hover {
+  background: #4EFFFF;
+  color: #000;
+}
+.holdsEverything {
+  position: relative;
+  min-height: 1500px;
+  background: #e3e3e3;
+  z-index: 9;
+  width: 100%;
+}
+.holdsEverything h1 {
+  text-align: center;
+  margin: 40px 0 30px;
+}
+.holdsEverything p {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 40px;
+}
+.holdsEverything a.toggle-nav {
+  position: absolute;
+  font-size: 25px;
+  color: rgb(255, 139, 139);
+  top: 0;
+  left: 0;
+  background: #444;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.holdsEverything a.toggle-nav:hover {
+  color: red;
+}
+i {
+  color: pink;
+}
+
+
+/* Card ng-animate CSS */
 .ng-animate.ng-enter {
   -webkit-transition: 1s linear all; /* Chrome */
   transition: 1s linear all;

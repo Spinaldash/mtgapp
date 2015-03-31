@@ -1,62 +1,105 @@
-div(ng-controller='HomeCtrl')
-  div.page-header.headerBanner
-    .container
-      h1 Brew
-
-  //- form(name='expansionForm', novalidate)
-  //-     .form-group
-  //-       label(for='code') Expansion Code
-  //-       input.form-control(type='text', name='code', autofocus=true, ng-model='expansion', required)
-  //-       button.btn.btn-primary(type='submit', ng-click='submit(expansion)') Find Cards
-  div
-    .container      
-      button.btn.btn-default(ng-click='resetCards()') Reset
-      button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Filters
-      button.btn.btn-default.toggle-nav Toggle-Nav
-      hr
-      div(collapse="isCollapsed")
-        
-        div.text-center.well.well-lg
-          div
-            label Add Set:
-            button.btn.btn-primary(ng-click='submit("DTK"); buttonDisable("DTK")' ng-disabled='disabledButtons.DTK') Dragons of Tarkir
-            button.btn.btn-primary(ng-click='submit("KTK"); buttonDisable("KTK")' ng-disabled='disabledButtons.KTK') Khans of Tarkir
-            button.btn.btn-primary(ng-click='submit("FRF"); buttonDisable("FRF")' ng-disabled='disabledButtons.FRF') Fate Reforged
-            button.btn.btn-primary(ng-click='submit("JOU"); buttonDisable("JOU")' ng-disabled='disabledButtons.JOU') Journey Into Nyx
-            button.btn.btn-primary(ng-click='submit("BNG"); buttonDisable("BNG")' ng-disabled='disabledButtons.BNG') Born of the Gods
-            button.btn.btn-primary(ng-click='submit("THS"); buttonDisable("THS")' ng-disabled='disabledButtons.THS') Theros
-            button.btn.btn-primary(ng-click='submit("M15"); buttonDisable("M15")' ng-disabled='disabledButtons.M15') Magic 2015 Core Set
-            
-          div
-            label Filter By Color:
-            div.btn-group 
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'White'" uncheckable) White
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Blue'" uncheckable) Blue
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Black'" uncheckable) Black
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Red'" uncheckable) Red        
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Green'" uncheckable) Green
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Colorless'" uncheckable) Colorless
-              label.btn.btn-success(ng-model="colorModel" btn-radio="'Land'" uncheckable) Land
-          div
-            label Sort By:
-            button.btn.btn-warning(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting Cost
-            button.btn.btn-warning(ng-model='sortModel' btn-radio="'color'" uncheckable) Color 
-          div
-            label Filter By Type:
-            div.btn-group 
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
-              label.btn.btn-success(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
-          div
-            label Filter By Rarity:
-            div.btn-group 
-              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Common'" uncheckable) Common
-              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable) Uncommon
-              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Rare'" uncheckable) Rare
-              label.btn.btn-success(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable) Mythic
-    .container
-      col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
-        img.imgCtrl(src='{{card.imageUrl}}')
+div.bodyDiv(ng-controller='HomeCtrl')
+  .site-wrap
+    .sideBarNav
+      nav
+        .container-fluid
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()')
+                  i.fa.fa-bars
+              col-xs-2
+                button.btn.btn-default.btnNavStyle B
+              col-xs-2
+                button.btn.btn-default.btnNavStyle R
+              col-xs-2
+                button.btn.btn-default.btnNavStyle E
+              col-xs-2
+                button.btn.btn-default.btnNavStyle W
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()') Sets
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 
+                  img.iconStyle(src='/public/images/png/KTK.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 3
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 4
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 5
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle Reset
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 2
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 3
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 4
+              col-xs-2
+                button.btn.btn-default.btnNavStyle 5
+      //-   ul
+      //-     li: a(href='#') Add Sets to your Brew
+      //-     li: a(href='#', ng-click='submit("DTK"); buttonDisable("DTK")', ng-disabled='disabledButtons.DTK') Dragons of Tarkir
+      //-     li: a(href='#') Fate Reforged
+      //-     li: a(href='#') Khans of Tarkir
+    .push-wrap
+      .holdsEverything
+        div.headerBanner
+          .container
+            h1 Brew
+        div
+          .container      
+            button.btn.btn-default(ng-click='resetCards()') Reset
+            button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Filters
+            //- a.toggle-nav.sideTab(href='#', ng-click='toggleNav()'): i.fa.fa-bars
+            hr
+            div(collapse="isCollapsed")
+              
+              div.text-center.well.well-lg
+                div
+                  label Add Set:
+                  button.btn.btn-primary(ng-click='submit("DTK"); buttonDisable("DTK")', ng-disabled='disabledButtons.DTK') Dragons of Tarkir
+                  button.btn.btn-primary(ng-click='submit("KTK"); buttonDisable("KTK")', ng-disabled='disabledButtons.KTK') Khans of Tarkir
+                  button.btn.btn-primary(ng-click='submit("FRF"); buttonDisable("FRF")', ng-disabled='disabledButtons.FRF') Fate Reforged
+                  button.btn.btn-primary(ng-click='submit("JOU"); buttonDisable("JOU")', ng-disabled='disabledButtons.JOU') Journey Into Nyx
+                  button.btn.btn-primary(ng-click='submit("BNG"); buttonDisable("BNG")', ng-disabled='disabledButtons.BNG') Born of the Gods
+                  button.btn.btn-primary(ng-click='submit("THS"); buttonDisable("THS")', ng-disabled='disabledButtons.THS') Theros
+                  button.btn.btn-primary(ng-click='submit("M15"); buttonDisable("M15")', ng-disabled='disabledButtons.M15') Magic 2015 Core Set
+                  
+                div
+                  label Filter By Color:
+                  div.btn-group 
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'White'" uncheckable) White
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Blue'" uncheckable) Blue
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Black'" uncheckable) Black
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Red'" uncheckable) Red        
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Green'" uncheckable) Green
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Colorless'" uncheckable) Colorless
+                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Land'" uncheckable) Land
+                div
+                  label Sort By:
+                  button.btn.btn-warning(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting Cost
+                  button.btn.btn-warning(ng-model='sortModel' btn-radio="'color'" uncheckable) Color 
+                div
+                  label Filter By Type:
+                  div.btn-group 
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
+                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
+                div
+                  label Filter By Rarity:
+                  div.btn-group 
+                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Common'" uncheckable) Common
+                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable) Uncommon
+                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Rare'" uncheckable) Rare
+                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable) Mythic
+          .container
+            col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
+              img.imgCtrl(src='{{card.imageUrl}}')
