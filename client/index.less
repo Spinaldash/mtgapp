@@ -1,9 +1,5 @@
-body{
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
 .headerBanner {
-  background-color: #4fbde0;
+  background-color: #006363;
   border-bottom: 1px solid #ebebeb;
   border-bottom-color: #4e5d6c;
   margin-bottom: 21px;
@@ -14,10 +10,64 @@ body{
   position: fixed;
 }
 
+/* Button CSS */
+
+.sideBarNav button {
+  color: #fff;
+  text-shadow: -2px 2px #346392;
+  background-color: #184f7c;
+  background-image: linear-gradient(top, #6496c8, #346392);
+  box-shadow: inset 0 0 0 1px #27496d;
+  border: none;
+  border-radius: 15px;
+}
+
+.sideBarNav button:hover,
+.sideBarNav button.hover {
+  box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;
+}
+
+.sideBarNav button:active,
+.sideBarNav button.active {
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
+}
+
+/* .sideBarNav button {
+  color: #fff;
+  background-color: #6496c8;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px #27496d;
+}
+
+.sideBarNav button:hover,
+.sideBarNav button.hover {
+  background-color: #417cb8
+}
+
+.sideBarNav button:active,
+.sideBarNav button.active {
+  background-color: #417cb8;
+  box-shadow: 0 5px #27496d;
+  transform: translateY(5px);
+}
+ */
 /* CSS Menu */
+h1 {
+  font-size: 35px;
+}
+
+hr {
+  margin: 19px 0px;
+}
 
 .iconStyle{
   height: 32px;
+  width: 32px;
+}
+
+.mtgIconStyle{
+  height: 21.5px;
   width: 32px;
 }
 
@@ -26,10 +76,13 @@ body{
   width: 72px;
   border: 1px dotted white;
   border-color: white;
-
+  padding: 0px;
 }
 
-nav {
+.wordAlign {
+  text-align: left;
+}
+nav.leftNav {
   width: 375px;
   height: 100%;
   position: fixed;
@@ -77,24 +130,29 @@ nav {
 
 /* BASE CSS */
 body {
-  background: #e3e3e3;
+  background: #363c34;
 }
+
 a {
   transition: all 300ms ease;
 }
-nav {
+nav.topNav {
+  background: #2b343f;
+}
+
+nav.leftNav {
   background: #2b343f;
   text-align: center;
   -webkit-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
   box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.5);
 }
-nav ul {
+nav.leftNav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-nav ul li a {
+nav.leftNav ul li a {
   display: block;
   text-decoration: none !important;
   height: 60px;
@@ -102,14 +160,14 @@ nav ul li a {
   font-size: 18px;
   color: #fff;
 }
-nav ul li a:hover {
+nav.leftNav ul li a:hover {
   background: #4EFFFF;
   color: #000;
 }
 .holdsEverything {
   position: relative;
-  min-height: 1500px;
-  background: #e3e3e3;
+  min-height: 850px;
+  background: #363c34;
   z-index: 9;
   width: 100%;
 }

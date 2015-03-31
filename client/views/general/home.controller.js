@@ -4,19 +4,12 @@ angular.module('angular-prototype')
   .filter('colorFilter', function() {
     return function (cards, color, type, rarity){
       var filtered = [];
-      console.log('color is:', color);
-      console.log('type is:', type);
-      console.log('rarity is:', rarity);
-      // if (!color){return true;} //If no color is specified, do not filter by color
       if (!cards) { return filtered;}
       filtered = cards.filter(function(card){
         switch (color) {
           case undefined:
-            console.log('undefined');
             return true;
           case 'Colorless': // If colorless is specified, return cards with no color
-            // if(card.type === 'Land'){return false;} // throw out nonbasic lands
-            // if(_.startsWith(card.type, 'Basic')){return false;} // throws out basic lands
             if(/Land/i.test(card.type)){return false;} // throws outs all lands
             if(!card.colors){return true;}
             break;
@@ -35,7 +28,6 @@ angular.module('angular-prototype')
             if(!card.colors){return false;}
             return _.includes(card.colors, color);
           default:
-            console.log('default');
             return true;
         }
       });
@@ -47,7 +39,7 @@ angular.module('angular-prototype')
       }
       if(rarity){
         filtered = filtered.filter(function(card){
-          var rarityMatch = new RegExp(rarity, 'i');
+          var rarityMatch = new RegExp(rarity);
           if (rarityMatch.test(card.rarity)){return true;}
         });
       }
@@ -76,17 +68,23 @@ angular.module('angular-prototype')
     };
 
     $scope.resetCards = function() {
-          $scope.cards = [];
-          delete $scope.disabledButtons;
+          $scope.cards = []; // Clear Cards from stage
+          delete $scope.disabledButtons; //Undisable set buttons
+          $scope.setClicked = null; // fix set display
     };
 
     $scope.buttonDisable = function(setName) {
       if (!$scope.disabledButtons) { $scope.disabledButtons = {};}
       $scope.disabledButtons[setName] = true;
+      $scope.setClicked = '../../images/png/' + setName + '.png'; // Shows Last Set image
     }
 
     $scope.toggleNav = function() {
       $('body').toggleClass('show-nav');
+    }
+
+    $scope.lastColorClicked = function(color) {
+      $scope.setClicked = '../../images/png/' + color + '.png';
     }
 
 }]);

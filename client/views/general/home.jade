@@ -1,105 +1,151 @@
 div.bodyDiv(ng-controller='HomeCtrl')
   .site-wrap
     .sideBarNav
-      nav
+      nav.leftNav
         .container-fluid
+          hr
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='toggleNav()') Sets
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("KTK"); buttonDisable("KTK")', ng-disabled='disabledButtons.KTK') 
+                  img.iconStyle(src='../../images/png/KTK.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("FRF"); buttonDisable("FRF")', ng-disabled='disabledButtons.FRF')
+                  img.iconStyle(src='../../images/png/FRF.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("DTK"); buttonDisable("DTK")', ng-disabled='disabledButtons.DTK') 
+                  img.iconStyle(src='../../images/png/DTK.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("JOU"); buttonDisable("JOU")', ng-disabled='disabledButtons.JOU')
+                  img.iconStyle(src='../../images/png/JOU.png')
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle
+                  img.iconStyle(ng-if='setClicked', src='{{setClicked}}') 
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("BNG"); buttonDisable("BNG")', ng-disabled='disabledButtons.BNG')
+                  img.iconStyle(src='../../images/png/BNG.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("THS"); buttonDisable("THS")', ng-disabled='disabledButtons.THS')
+                  img.iconStyle(src='../../images/png/THS.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='submit("M15"); buttonDisable("M15")', ng-disabled='disabledButtons.M15')
+                  img.mtgIconStyle(src='../../images/png/M15.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle.setsBG(ng-click='resetCards()')
+                  img.iconStyle(src='../../images/png/untap.png')
+          hr
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()') Color:
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'White'" uncheckable) 
+                  img.iconStyle(src='../../images/png/White.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Blue'" uncheckable)
+                  img.iconStyle(src='../../images/png/Blue.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Black'" uncheckable)
+                  img.iconStyle(src='../../images/png/Black.png')
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Red'" uncheckable)
+                  img.iconStyle(src='../../images/png/Red.png')
           .row
             .btn-group
               col-xs-2
                 button.btn.btn-default.btnNavStyle(ng-click='toggleNav()')
-                  i.fa.fa-bars
+                  img.iconStyle(ng-if='colorModel', src='../../images/png/{{colorModel}}.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle B
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Green'" uncheckable) 
+                  img.iconStyle(src='../../images/png/Green.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle R
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Colorless'" uncheckable)
+                  img.iconStyle(src='../../images/png/Colorless.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle E
+                button.btn.btn-default.btnNavStyle(ng-model="colorModel" btn-radio="'Land'" uncheckable)
+                  img.iconStyle(src='../../images/png/Land.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle W
+                button.btn.btn-default.btnNavStyle(ng-click='resetCards()')
+                  img.iconStyle(src='../../images/png/untap.png')
+          hr
           .row
             .btn-group
               col-xs-2
-                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()') Sets
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()')
+                  span(ng-if='!rarityModel') Rarity:
+                  img.iconStyle(ng-if='rarityModel', src='../../images/png/{{rarityModel}}.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle 
-                  img.iconStyle(src='/public/images/png/KTK.png')
+                button.btn.btn-default.btnNavStyle(ng-model="rarityModel" btn-radio="'Common'" uncheckable) 
+                  img.iconStyle(src='../../images/png/common.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle 3
+                button.btn.btn-default.btnNavStyle(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable)
+                  img.iconStyle(src='../../images/png/uncommon.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle 4
+                button.btn.btn-default.btnNavStyle(ng-model="rarityModel" btn-radio="'Rare'" uncheckable)
+                  img.iconStyle(src='../../images/png/rare.png')
               col-xs-2
-                button.btn.btn-default.btnNavStyle 5
+                button.btn.btn-default.btnNavStyle(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable)
+                  img.iconStyle(src='../../images/png/mythic.png')
+          hr
           .row
             .btn-group
               col-xs-2
-                button.btn.btn-default.btnNavStyle Reset
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()') Sort:
               col-xs-2
-                button.btn.btn-default.btnNavStyle 2
+                button.btn.btn-default.btnNavStyle(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting 
+                  br
+                  span Cost 
               col-xs-2
-                button.btn.btn-default.btnNavStyle 3
+                button.btn.btn-default.btnNavStyle.disabled(ng-model='sortModel' btn-radio="''" uncheckable) Number
               col-xs-2
-                button.btn.btn-default.btnNavStyle 4
+                button.btn.btn-default.btnNavStyle.disabled(ng-model='sortModel' btn-radio="''" uncheckable) Color
               col-xs-2
-                button.btn.btn-default.btnNavStyle 5
-      //-   ul
-      //-     li: a(href='#') Add Sets to your Brew
-      //-     li: a(href='#', ng-click='submit("DTK"); buttonDisable("DTK")', ng-disabled='disabledButtons.DTK') Dragons of Tarkir
-      //-     li: a(href='#') Fate Reforged
-      //-     li: a(href='#') Khans of Tarkir
+                button.btn.btn-default.btnNavStyle.disabled(ng-model='sortModel' btn-radio="''" uncheckable) Alphabetic
+          hr
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()') Filter:
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature 
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
+          .row
+            .btn-group
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-click='toggleNav()')
+                  span(ng-if='typeModel') {{typeModel}}
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Dragon'" uncheckable) Dragon
+              col-xs-2
+                button.btn.btn-default.btnNavStyle(ng-model="typeModel" btn-radio="'Warrior'" uncheckable) Warrior                
     .push-wrap
       .holdsEverything
-        div.headerBanner
-          .container
-            h1 Brew
+        nav.navbar.navbar-default.topNav(ng-controller='NavCtrl')
+          .container-fluid
+            .navbar-header
+              button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a.navbar-brand(ui-sref='home') Brew
+            #navbar.collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
         div
-          .container      
-            button.btn.btn-default(ng-click='resetCards()') Reset
-            button.btn.btn-default(ng-click="isCollapsed = !isCollapsed") Filters
-            //- a.toggle-nav.sideTab(href='#', ng-click='toggleNav()'): i.fa.fa-bars
-            hr
-            div(collapse="isCollapsed")
-              
-              div.text-center.well.well-lg
-                div
-                  label Add Set:
-                  button.btn.btn-primary(ng-click='submit("DTK"); buttonDisable("DTK")', ng-disabled='disabledButtons.DTK') Dragons of Tarkir
-                  button.btn.btn-primary(ng-click='submit("KTK"); buttonDisable("KTK")', ng-disabled='disabledButtons.KTK') Khans of Tarkir
-                  button.btn.btn-primary(ng-click='submit("FRF"); buttonDisable("FRF")', ng-disabled='disabledButtons.FRF') Fate Reforged
-                  button.btn.btn-primary(ng-click='submit("JOU"); buttonDisable("JOU")', ng-disabled='disabledButtons.JOU') Journey Into Nyx
-                  button.btn.btn-primary(ng-click='submit("BNG"); buttonDisable("BNG")', ng-disabled='disabledButtons.BNG') Born of the Gods
-                  button.btn.btn-primary(ng-click='submit("THS"); buttonDisable("THS")', ng-disabled='disabledButtons.THS') Theros
-                  button.btn.btn-primary(ng-click='submit("M15"); buttonDisable("M15")', ng-disabled='disabledButtons.M15') Magic 2015 Core Set
-                  
-                div
-                  label Filter By Color:
-                  div.btn-group 
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'White'" uncheckable) White
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Blue'" uncheckable) Blue
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Black'" uncheckable) Black
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Red'" uncheckable) Red        
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Green'" uncheckable) Green
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Colorless'" uncheckable) Colorless
-                    label.btn.btn-success(ng-model="colorModel" btn-radio="'Land'" uncheckable) Land
-                div
-                  label Sort By:
-                  button.btn.btn-warning(ng-model='sortModel' btn-radio="'cmc'" uncheckable) Casting Cost
-                  button.btn.btn-warning(ng-model='sortModel' btn-radio="'color'" uncheckable) Color 
-                div
-                  label Filter By Type:
-                  div.btn-group 
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Creature'" uncheckable) Creature
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Legendary'" uncheckable) Legendary
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Enchantment'" uncheckable) Enchantment
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Planeswalker'" uncheckable) Planeswalker
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Instant'" uncheckable) Instant
-                    label.btn.btn-success(ng-model="typeModel" btn-radio="'Sorcery'" uncheckable) Sorcery
-                div
-                  label Filter By Rarity:
-                  div.btn-group 
-                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Common'" uncheckable) Common
-                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Uncommon'" uncheckable) Uncommon
-                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Rare'" uncheckable) Rare
-                    label.btn.btn-success(ng-model="rarityModel" btn-radio="'Mythic'" uncheckable) Mythic
           .container
             col-xs-2(ng-repeat='card in cards | colorFilter:colorModel:typeModel:rarityModel | orderBy:sortModel') 
               img.imgCtrl(src='{{card.imageUrl}}')
