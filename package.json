@@ -1,6 +1,6 @@
 {
   "name": "Brew",
-  "description": "MTG Deckbuildig Application",
+  "description": "MTG Deckbuilding Application",
   "homepage": "https://github.com/spinaldash/mtgapp",
   "engines": {
     "node": "0.12.x"
@@ -28,7 +28,8 @@
     "preinstall": "rm -rf node_modules public",
     "postinstall": "bower install && gulp build",
     "test": "MONGO_URL=mongodb://localhost/brew-test lab -l -v -m 5000 test/unit test/acceptance",
-    "mtgDB": "MONGO_URL=mongodb://localhost/brew-prod lab -l -v -m 5000 mtgdata/populate mtgdata/other"
+    "mtgDB": "MONGO_URL=mongodb://localhost/brew-prod lab -l -v -m 5000 mtgdata/populate mtgdata/other",
+    "pm2Start": "MONGO_URL=mongodb://localhost/brew-prod PORT=3333 pm2 start server/index.js --name mtg"
   },
   "license": "MIT",
   "dependencies": {
